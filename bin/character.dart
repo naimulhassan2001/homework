@@ -1,9 +1,9 @@
 
 
 main() {
-  // String language = "Dart";
-  // for (var i in language.) {
-  //   print(i);
-  // }
+   String language = "Dart";
+   for (var i in language.split("")) {
+     print(i);
+   }
 }
 
