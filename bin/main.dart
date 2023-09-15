@@ -9,17 +9,25 @@ calculation(int loanAmount, int year, int interestRate) {
   var interest = compoundCapital - loanAmount ;
 
 
-  print("");
-  stdout.write("Loan Amount: $loanAmount  ") ;
-  stdout.write("Year : $year  ") ;
-  stdout.write("Rate : $rate  ") ;
-  stdout.write("interest : $interest  ") ;
-  stdout.write("Compound Capital: $compoundCapital") ;
+  stdout.write("\nLoan Amount: $loanAmount") ;
+  stdout.write(' | ') ;
+  stdout.write("Tenure : $year") ;
+  stdout.write(' | ') ;
+  stdout.write(" interest Rate : $interestRate") ;
+  stdout.write(' | ') ;
+  stdout.write("interest Amount: $interest") ;
+  stdout.write(' | ') ;
+  stdout.write("Compound Capital: $compoundCapital\n");
+ // print("-------------------------------------------------------------------------") ;
+
+
+
 
 
 }
 
+
 void main() {
-  calculation(5000, 2, 12);
-  calculation(5000, 2, 12);
+  calculation(100000, 3, 5);
+
 }
