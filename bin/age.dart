@@ -2,7 +2,6 @@ void main() {
   var age = (int birthYear) {
     return (int currentYear) {
       return currentYear - birthYear;
-
     };
   };
 

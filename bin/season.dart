@@ -1,53 +1,40 @@
-
-
 main() {
-
   String season = "";
   String month = "Feb";
 
-  switch(month)  {
-
-    case 'jan' :
-    case 'Feb' :
-    case 'March' :
+  switch (month) {
+    case 'jan':
+    case 'Feb':
+    case 'March':
       season = "Spring";
 
-      break ;
+      break;
 
-
-    case 'Apr' :
-    case 'may' :
-    case 'Jun' :
+    case 'Apr':
+    case 'may':
+    case 'Jun':
       season = "Summer";
 
-      break ;
+      break;
 
-
-    case 'July' :
-    case 'Aug' :
-    case 'Sep' :
+    case 'July':
+    case 'Aug':
+    case 'Sep':
       season = "Autumn";
 
-      break ;
+      break;
 
-
-    case 'Oct' :
-    case 'Nov' :
-    case 'Dec' :
+    case 'Oct':
+    case 'Nov':
+    case 'Dec':
       season = "Winter";
 
-      break ;
+      break;
 
     default:
       season = "Invalid";
-      break ;
-
-
-
-
+      break;
   }
 
-
   print(season);
-
 }
