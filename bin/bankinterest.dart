@@ -11,7 +11,6 @@ simple(int loanAmount, int year, int interestRate, Function fn ) {
   var rate = interestRate / 100;
   var interest = loanAmount *rate * year ;
   fn(interest, loanAmount, interestRate, year ) ;
-
 }
 
 
