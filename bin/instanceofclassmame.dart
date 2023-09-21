@@ -1,10 +1,11 @@
-class Point extends Object {
+class Point{
   int x = 0;
   int y = 0;
   Point(this.x, this.y);
+
   @override
   String toString() {
-    return "x=$x, y=$y ${DateTime.now()}";
+    return " Instance of '$runtimeType' ${DateTime.now()}";
   }
 }
 void main() {
