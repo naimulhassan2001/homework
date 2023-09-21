@@ -10,10 +10,10 @@ compound(int loanAmount, int tenure, int interestRate, Function fn) {
   fn(interest, loanAmount, interestRate, tenure);
 }
 
-simple(int loanAmount, int year, int interestRate, Function fn) {
+simple(int loanAmount, int tenure, int interestRate, Function fn) {
   var rate = interestRate / 100;
-  var interest = (loanAmount * rate * year).round();
-  fn(interest, loanAmount, interestRate, year);
+  var interest = (loanAmount * rate * tenure).round();
+  fn(interest, loanAmount, interestRate, tenure);
 }
 
 var compoundInterest =
@@ -22,23 +22,28 @@ var compoundInterest =
 
   if (compoundCallNumber == 1) {
     print("Compound interest Rate:");
-    print("loan Amount  Tenure  interest Rate  interest Amount     Compound capital");
+    print(
+        "loan Amount  Tenure  interest Rate  interest Amount     Compound capital");
     compoundCallNumber += 1;
   }
 
-  print("  $loanAmount       $tenure          $interestRate%        $interest   $compoundCapital");
+  print(
+      "  $loanAmount       $tenure          $interestRate%        $interest   $compoundCapital");
 };
 
-var simpleInterest = (num interest, num loanAmount, num interestRate, num tenure) {
+var simpleInterest =
+    (num interest, num loanAmount, num interestRate, num tenure) {
   var simpleCapital = interest + loanAmount;
 
   if (simpleCallNumber == 1) {
     print("\nSimple  interest Rate:");
-    print('loan Amount   Tenure   Interest Rate  interest Amount  Simple capital');
+    print(
+        'loan Amount   Tenure   Interest Rate  interest Amount  Simple capital');
     simpleCallNumber += 1;
   }
 
-  print("  $loanAmount        $tenure         $interestRate%              $interest           $simpleCapital");
+  print(
+      "  $loanAmount        $tenure         $interestRate%              $interest           $simpleCapital");
 };
 
 void main() {
@@ -54,15 +59,13 @@ void main() {
   }
 
   for (int i = 0; i < 5; i++) {
-    var loanAmount = Random().nextInt(5);
-    loanAmount = Random().nextInt(9) + 1;
+    var loanAmount = Random().nextInt(9) + 1;
+
     loanAmount *= 100000;
 
-    var tenure = Random().nextInt(5);
-    tenure = Random().nextInt(8) + 2;
+    var tenure = Random().nextInt(8) + 2;
 
-    var interestRate = Random().nextInt(5);
-    interestRate = Random().nextInt(7) + 3;
+    var interestRate = Random().nextInt(7) + 3;
 
     simple(loanAmount, tenure, interestRate, simpleInterest);
   }
