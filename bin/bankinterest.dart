@@ -1,50 +1,57 @@
 import 'dart:math';
 
-int compoundCallNumber = 1;
-int simpleCallNumber = 1;
+class CompoundInterest {
 
-compound(int loanAmount, int tenure, int interestRate, Function fn) {
-  var rate = interestRate / 100;
-  var compoundCapital = loanAmount * (pow((1 + rate), tenure));
-  var interest = compoundCapital - loanAmount;
-  fn(interest, loanAmount, interestRate, tenure);
-}
+  static int compoundCallNumber = 1;
 
-simple(int loanAmount, int tenure, int interestRate, Function fn) {
-  var rate = interestRate / 100;
-  var interest = (loanAmount * rate * tenure).round();
-  fn(interest, loanAmount, interestRate, tenure);
-}
-
-var compoundInterest =
-    (num interest, num loanAmount, num interestRate, num tenure) {
-  var compoundCapital = loanAmount + interest;
-
-  if (compoundCallNumber == 1) {
-    print("Compound interest Rate:");
-    print(
-        "loan Amount  Tenure  interest Rate  interest Amount     Compound capital");
-    compoundCallNumber += 1;
+  compound(int loanAmount, int tenure, int interestRate, Function fn) {
+    var rate = interestRate / 100;
+    var compoundCapital = loanAmount * (pow((1 + rate), tenure));
+    var interest = compoundCapital - loanAmount;
+    fn(interest, loanAmount, interestRate, tenure);
   }
 
-  print(
-      "  $loanAmount       $tenure          $interestRate%        $interest   $compoundCapital");
-};
+  var compoundInterest =
+      (num interest, num loanAmount, num interestRate, num tenure) {
+    var compoundCapital = loanAmount + interest;
 
-var simpleInterest =
-    (num interest, num loanAmount, num interestRate, num tenure) {
-  var simpleCapital = interest + loanAmount;
+    if (compoundCallNumber == 1) {
+      print("Compound interest Rate:");
+      print(
+          "loan Amount  Tenure  interest Rate  interest Amount     Compound capital");
+      compoundCallNumber += 1;
+    }
 
-  if (simpleCallNumber == 1) {
-    print("\nSimple  interest Rate:");
     print(
-        'loan Amount   Tenure   Interest Rate  interest Amount  Simple capital');
-    simpleCallNumber += 1;
+        "  $loanAmount       $tenure          $interestRate%        $interest   $compoundCapital");
+  };
+}
+
+class SimpleInterest {
+
+  static int simpleCallNumber = 1;
+
+  simple(int loanAmount, int tenure, int interestRate, Function fn) {
+    var rate = interestRate / 100;
+    var interest = (loanAmount * rate * tenure).round();
+    fn(interest, loanAmount, interestRate, tenure);
   }
 
-  print(
-      "  $loanAmount        $tenure         $interestRate%              $interest           $simpleCapital");
-};
+  var simpleInterest =
+      (num interest, num loanAmount, num interestRate, num tenure) {
+    var simpleCapital = interest + loanAmount;
+
+    if (simpleCallNumber == 1) {
+      print("\nSimple  interest Rate:");
+      print(
+          'loan Amount   Tenure   Interest Rate  interest Amount  Simple capital');
+      simpleCallNumber += 1;
+    }
+
+    print(
+        "  $loanAmount        $tenure         $interestRate%              $interest           $simpleCapital");
+  };
+}
 
 void main() {
   for (int i = 0; i < 5; i++) {
@@ -55,7 +62,8 @@ void main() {
 
     var interestRate = Random().nextInt(7) + 3;
 
-    compound(loanAmount, tenure, interestRate, compoundInterest);
+    CompoundInterest().compound(
+        loanAmount, tenure, interestRate, CompoundInterest().compoundInterest);
   }
 
   for (int i = 0; i < 5; i++) {
@@ -67,6 +75,7 @@ void main() {
 
     var interestRate = Random().nextInt(7) + 3;
 
-    simple(loanAmount, tenure, interestRate, simpleInterest);
+    SimpleInterest().simple(
+        loanAmount, tenure, interestRate, SimpleInterest().simpleInterest);
   }
 }
